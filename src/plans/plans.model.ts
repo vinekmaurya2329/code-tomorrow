@@ -15,7 +15,8 @@ const planModel = sequelize.define('Plan',{
     },
     name:{
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:false,
+        
     },
     extraChargePerUnit :{
         type:DataTypes.DECIMAL(10,2),
@@ -23,7 +24,11 @@ const planModel = sequelize.define('Plan',{
     }
 },{
     timestamps:true,
-    tableName:'plans'
+    tableName:'plans',
+    indexes:[
+        {fields:['name']},
+        {fields:['monthlyQuota']}
+    ]
 })
 
 export default planModel;
